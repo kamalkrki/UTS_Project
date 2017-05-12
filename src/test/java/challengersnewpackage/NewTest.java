@@ -1,8 +1,17 @@
 package challengersnewpackage;
+//file
+//import java.io.File;
 
+
+//import org.openqa.selenium.OutputType;
+//import org.openqa.selenium.TakesScreenshot;
 //import java.util.concurrent.TimeUnit;
 //import org.openqa.selenium.By;
-
+//date and time
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+ 
 import org.openqa.selenium.WebDriver;
  
 import org.openqa.selenium.chrome.ChromeDriver;	
@@ -19,17 +28,35 @@ public class NewTest {
     long start;
     long finish;
     @Test				
-	public void testEasy() {	
+	public void testEasy() {
+    	
+    	DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+    	 
+    	 //get current date time with Date()
+    	 Date date = new Date();
+    	 
+    	 // Now format the date
+    	 String dateandtime= dateFormat.format(date);
+    	 
     	long start = System.currentTimeMillis();
 
 		driver.get("http://kamalkarki.com"); 
 		long finish = System.currentTimeMillis();
 		long totalTime = finish - start;
-		System.out.println("Loading Time: "+totalTime);
 		
 		//get the title of kamalkarki.com page
-		String title = driver.getTitle();				 
-		Assert.assertTrue(title.contains("Kamal Karki || Developer")); 		
+		String title = driver.getTitle();	
+		
+		Assert.assertTrue(title.contains("Kamal Karki || Developer")); 
+		
+	   // File screenshotFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		
+		System.out.print("Page Title: "+title+"\n");
+		System.out.print("Tested Date and Time: "+dateandtime+"\n");
+
+		System.out.print("loading Time: "+totalTime+"\n");
+		
+		
 	}	
 	@BeforeTest
 	public void beforeTest() {	
